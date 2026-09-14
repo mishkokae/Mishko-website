@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>mishko</title>
+<script>
+  try{
+    if (sessionStorage.getItem('mishko-entered')) {
+      document.documentElement.classList.add('no-splash');
+    }
+  }catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?preview=1">
+</head>
+<body>
+
+<div id="splash" role="button" tabindex="0" aria-label="enter site">
+  <img class="scribble" src="splat.png" alt="" aria-hidden="true">
+  <img class="splash-signature" src="signature.png" alt="mishko">
+</div>
+
+<div id="grain" aria-hidden="true"></div>
+
+<nav>
+  <a href="#top" class="brand"><img src="signature.png" alt="mishko" class="brand-mark"></a>
+  <span class="sep">/</span>
+  <a href="#bio">about</a>
+  <span class="sep">/</span>
+  <a href="#music">music</a>
+  <span class="sep">/</span>
+  <a href="#demos">demos</a>
+  <span class="sep">/</span>
+  <a href="#live">live</a>
+  <span class="sep">/</span>
+  <a href="#projects">projects</a>
+  <span class="sep">/</span>
+  <a href="#press">press</a>
+  <span class="sep">/</span>
+  <a href="#contact">contact</a>
+  <span class="sep">/</span>
+  <a href="https://www.instagram.com/mishk0000/" target="_blank">instagram</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="block">
+    <p class="eyebrow">debut single, 2024</p>
+    <div class="media hero">
+      <img src="cover.jpg" alt="i need it cover art">
+    </div>
+    <p class="media-caption">mixed by matt lomas, mastered at metropolis studios</p>
+  </div>
+
+  <div class="block" id="bio">
+    <p class="eyebrow">about</p>
+    <div class="doodle-row" aria-hidden="true">
+      <svg viewBox="0 0 60 60" width="42" height="42" fill="none" stroke="#111111" stroke-width="1.2">
+        <circle cx="30" cy="30" r="22"/>
+        <circle cx="30" cy="30" r="12"/>
+        <line x1="30" y1="8" x2="30" y2="52"/>
+        <line x1="8" y1="30" x2="52" y2="30"/>
+        <line x1="14" y1="14" x2="46" y2="46"/>
+        <line x1="46" y1="14" x2="14" y2="46"/>
+      </svg>
+      <svg viewBox="0 0 60 60" width="42" height="42" fill="none" stroke="#111111" stroke-width="1.2">
+        <circle cx="30" cy="30" r="23"/>
+        <path d="M20,25 Q30,15 40,25 Q45,32 38,38 Q30,44 22,38 Q15,32 20,25 Z"/>
+        <circle cx="12" cy="18" r="1.5" fill="#111111"/>
+        <circle cx="48" cy="20" r="1.5" fill="#111111"/>
+        <circle cx="45" cy="45" r="1.5" fill="#111111"/>
+        <circle cx="15" cy="44" r="1.5" fill="#111111"/>
+      </svg>
+      <svg viewBox="0 0 60 60" width="42" height="42" fill="none" stroke="#111111" stroke-width="1.2">
+        <circle cx="30" cy="30" r="8" fill="#111111" stroke="none"/>
+        <line x1="30" y1="30" x2="30" y2="4"/>
+        <line x1="30" y1="30" x2="52" y2="16"/>
+        <line x1="30" y1="30" x2="56" y2="38"/>
+        <line x1="30" y1="30" x2="42" y2="56"/>
+        <line x1="30" y1="30" x2="18" y2="56"/>
+        <line x1="30" y1="30" x2="4" y2="38"/>
+        <line x1="30" y1="30" x2="8" y2="16"/>
+      </svg>
+    </div>
+    <p>mishko is the solo project of a london-based producer, multi-instrumentalist, and performing artist. classically trained on piano, self-taught on guitar, bass, drums, saxophone, and trumpet — the work sits between song and studio process, using distortion and granulation as compositional tools rather than effects.</p>
+    <p>debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, and tileyard, supported by arts council england (dycp) funding.</p>
+    <div class="manifesto">
+      <div><span class="num">01</span><span class="label">based</span>london, uk</div>
+      <div><span class="num">02</span><span class="label">instruments</span>piano, guitar, bass, drums, sax, trumpet, vocals</div>
+      <div><span class="num">03</span><span class="label">studios</span>roundhouse, ten87, bankstock, tileyard</div>
+      <div><span class="num">04</span><span class="label">support</span>arts council england (dycp)</div>
+    </div>
+  </div>
+
+  <div class="block" id="music">
+    <p class="eyebrow">music</p>
+    <div class="vinyl">
+      <div class="vinyl-side">
+        <p class="vinyl-heading">tracklist</p>
+        <!--
+          each track is one .vinyl-track block. add an mp3 and uncomment
+          the audio tag to make it playable right here on the page:
+
+          <div class="vinyl-track">
+            <a href="#" class="vinyl-track-name">track title</a> <span class="vinyl-track-note">(add link)</span>
+            <audio controls preload="none" src="track.mp3"></audio>
+          </div>
+        -->
+        <div class="vinyl-track">
+          <a href="https://youtu.be/J0e-NsD81-I" class="vinyl-track-name" target="_blank">i need it</a>
+          <p class="track-hint">add an mp3 to make this playable here</p>
+        </div>
+        <div class="vinyl-track">
+          <a href="https://soundcloud.com/deneudenudes/sets/a-portfolio" class="vinyl-track-name" target="_blank">sos</a>
+          <p class="track-hint">add an mp3 to make this playable here</p>
+        </div>
+        <div class="vinyl-track">
+          <span class="vinyl-track-name">[track title]</span> <span class="vinyl-track-note">(add link)</span>
+          <p class="track-hint">add an mp3 to make this playable here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="demos">
+    <p class="eyebrow">demos</p>
+    <p>early sketches and works in progress — unmixed, unmastered.</p>
+    <div class="track-list">
+      <!--
+        each demo is one .track block: a clickable title button plus a
+        hidden .track-player holding the iframe. the iframe's real src
+        lives in data-src and only loads once you click the title, so nothing
+        plays (or even downloads) until you ask for it. to add another demo,
+        grab an embed src from soundcloud's share -> embed panel (or from
+        https://soundcloud.com/oembed?format=json&url=TRACK_URL) and copy
+        this pattern; for a plain mp3 instead, put <audio controls
+        preload="none" src="demo.mp3"> inside .track-player and drop data-src.
+      -->
+      <div class="track">
+        <button type="button" class="track-toggle" aria-expanded="false">
+          <span class="track-toggle-title">lost</span>
+          <span class="track-toggle-icon" aria-hidden="true">▶</span>
+        </button>
+        <div class="track-player" hidden>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
+            title="lost — demo"
+            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2398020345&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+        </div>
+      </div>
+      <div class="track">
+        <button type="button" class="track-toggle" aria-expanded="false">
+          <span class="track-toggle-title">late train open station</span>
+          <span class="track-toggle-icon" aria-hidden="true">▶</span>
+        </button>
+        <div class="track-player" hidden>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
+            title="late train open station — demo"
+            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2394445020&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+        </div>
+      </div>
+      <div class="track">
+        <button type="button" class="track-toggle" aria-expanded="false">
+          <span class="track-toggle-title">10x10 alternative new 19082026</span>
+          <span class="track-toggle-icon" aria-hidden="true">▶</span>
+        </button>
+        <div class="track-player" hidden>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
+            title="10x10 alternative new 19082026 — demo"
+            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2384493237&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+        </div>
+      </div>
+      <div class="track">
+        <button type="button" class="track-toggle" aria-expanded="false">
+          <span class="track-toggle-title">speechless 23082026</span>
+          <span class="track-toggle-icon" aria-hidden="true">▶</span>
+        </button>
+        <div class="track-player" hidden>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
+            title="speechless 23082026 — demo"
+            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2386689999&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+        </div>
+      </div>
+      <div class="track">
+        <button type="button" class="track-toggle" aria-expanded="false">
+          <span class="track-toggle-title">fish</span>
+          <span class="track-toggle-icon" aria-hidden="true">▶</span>
+        </button>
+        <div class="track-player" hidden>
+          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
+            title="fish — demo"
+            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2316459008&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="live">
+    <p class="eyebrow">live</p>
+    <p>a transportable rig combining hardware sequencing, sampling, and a modular signal path — built to travel light by train while keeping the same tools used in the studio available on stage. developed with support from an nlpg grant.</p>
+    <div class="line-list">
+      <div><span>no upcoming shows</span><span class="t">check back soon</span></div>
+    </div>
+  </div>
+
+  <div class="block" id="projects">
+    <p class="eyebrow">projects</p>
+    <p>video from things i've been part of.</p>
+    <div class="video-grid">
+      <div>
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/J0e-NsD81-I"
+            title="i need it — music video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">i need it — music video</p>
+      </div>
+    </div>
+    <p class="media-caption"><a href="projects.html">more projects →</a></p>
+  </div>
+
+  <div class="block" id="press">
+    <p class="eyebrow">press</p>
+    <p>photos for press and promotional use.</p>
+    <!--
+      each frame is one numbered contact-sheet cell. add a real photo by
+      dropping an img inside a .frame, ahead of the .frame-num span:
+        <div class="frame"><img src="press-01.jpg" alt="press photo"><span class="frame-num">01a</span></div>
+      copy a .frame block to add more than six.
+    -->
+    <div class="contact-sheet">
+      <div class="frame"><img src="press-01.jpg" alt="mishko live, mic raised"><span class="frame-num">01a</span></div>
+      <div class="frame"><img src="press-02.jpg" alt="mishko press collage"><span class="frame-num">02a</span></div>
+      <div class="frame"><span class="frame-num">03a</span></div>
+      <div class="frame"><span class="frame-num">04a</span></div>
+      <div class="frame"><span class="frame-num">05a</span></div>
+      <div class="frame"><span class="frame-num">06a</span></div>
+    </div>
+    <p class="media-caption">two frames filled — add more photos to fill the rest</p>
+  </div>
+
+  <div class="block" id="contact">
+    <p class="eyebrow">contact</p>
+    <p><a href="mailto:hello@mishkomusic.com">hello@mishkomusic.com</a></p>
+  </div>
+
+</div>
+
+<footer>© <img src="signature.png" alt="mishko" class="footer-mark">, <span id="year"></span></footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var splash = document.getElementById('splash');
+  var ENTER_KEY = 'mishko-entered';
+
+  function enterSite(){
+    splash.classList.add('is-hidden');
+    document.documentElement.classList.add('no-splash');
+    try{ sessionStorage.setItem(ENTER_KEY, '1'); }catch(e){}
+  }
+
+  splash.addEventListener('click', enterSite);
+  splash.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enterSite(); }
+  });
+
+  // click a demo's title to load and reveal its player; click again to hide it
+  document.querySelectorAll('.track-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var track = btn.closest('.track');
+      var player = track.querySelector('.track-player');
+      var iframe = player.querySelector('iframe');
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      if (!isOpen) {
+        if (iframe && iframe.dataset.src) {
+          iframe.src = iframe.dataset.src;
+          delete iframe.dataset.src;
+        }
+        player.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        player.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

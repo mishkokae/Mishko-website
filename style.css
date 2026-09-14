@@ -1,0 +1,413 @@
+  :root{
+    --paper:#eeece3;
+    --ink:#111111;
+    --line:#111111;
+    --mute:#55524a;
+    --splash-bg:#eeece3;
+    --splash-ink:#111111;
+    --accent:#a83a2c;
+    --font-display:'Anton', Impact, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --grain-opacity:0.09;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:var(--ink); text-decoration:underline; text-decoration-color:rgba(17,17,17,0.35); }
+  a:hover{ text-decoration-color:var(--accent); }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 24px 100px;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    padding:28px 24px 40px;
+    max-width:640px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 20px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  nav a{ text-decoration:none; font-weight:800; }
+  nav a:hover{ text-decoration:underline; text-decoration-color:var(--accent); }
+  nav .sep{ color:var(--mute); font-weight:400; }
+  nav a.brand{ display:inline-flex; align-items:center; }
+  .brand-mark{ height:18px; width:auto; display:block; }
+
+  /* ---------- generic blocks ---------- */
+  .eyebrow{
+    display:inline-block;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    font-weight:700;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:3px 10px;
+    margin:0 0 14px;
+  }
+
+  .block{ margin-bottom:56px; }
+
+  .block p{ max-width:56ch; margin-bottom:14px; }
+
+  /* ---------- media ---------- */
+  .media img,
+  .media video{
+    width:100%;
+    display:block;
+    filter:grayscale(1) contrast(1.1);
+  }
+  .media.placeholder{
+    aspect-ratio:16/10;
+    border:2px solid var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--mute);
+  }
+  .media-caption{
+    margin-top:8px;
+    color:var(--mute);
+  }
+
+  /* hero: a dark media card with a bold condensed title stamped over it,
+     gig-poster style. works with just the placeholder fill now, and keeps
+     working once a real photo/video is dropped in behind the title. */
+  .media.hero{
+    position:relative;
+    aspect-ratio:16/10;
+    border:2px solid var(--ink);
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+    background:#141312;
+  }
+  .media.hero img,
+  .media.hero video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center bottom;
+    z-index:0;
+  }
+  .hero-title{
+    position:relative;
+    z-index:1;
+    font-family:var(--font-display);
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(30px, 7.5vw, 68px);
+    letter-spacing:0.01em;
+    line-height:0.95;
+    color:#f3f0e6;
+  }
+  .media.hero.accent-2 .hero-title{ color:var(--accent); }
+
+  /* ---------- youtube / project embeds ---------- */
+  .video-grid{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    margin-top:6px;
+  }
+  .video-embed{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    border:2px solid var(--ink);
+    overflow:hidden;
+  }
+  .video-embed iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .video-embed.placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--mute);
+    text-align:center;
+    padding:16px;
+  }
+  .video-caption{
+    margin-top:8px;
+    color:var(--mute);
+  }
+
+  /* ---------- lines / lists ---------- */
+  .line-list{ margin-top:6px; }
+  .line-list div{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:6px 0;
+    border-bottom:1px solid rgba(17,17,17,0.2);
+  }
+  .line-list div:first-child{ border-top:1px solid rgba(17,17,17,0.2); }
+  .line-list .t{ color:var(--mute); flex-shrink:0; }
+
+  /* ---------- tracks (listen / demos) ---------- */
+  .track-list{ margin-top:6px; }
+  .track{
+    padding:10px 0;
+    border-bottom:1px solid rgba(17,17,17,0.2);
+  }
+  .track:first-child{ border-top:1px solid rgba(17,17,17,0.2); }
+  .track-row{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .track-row .t{ color:var(--mute); flex-shrink:0; }
+  .track-hint{
+    margin:4px 0 0;
+    font-size:13px;
+    color:var(--mute);
+  }
+  .track audio,
+  .track iframe{
+    width:100%;
+    margin-top:8px;
+    display:block;
+    border:0;
+  }
+  .track-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    width:100%;
+    background:none;
+    border:0;
+    padding:0;
+    margin:0;
+    font:inherit;
+    font-weight:800;
+    color:var(--ink);
+    text-align:left;
+    cursor:pointer;
+  }
+  .track-toggle-title{
+    text-decoration:underline;
+    text-decoration-color:rgba(17,17,17,0.3);
+  }
+  .track-toggle:hover .track-toggle-title{ text-decoration-color:var(--accent); }
+  .track-toggle-icon{
+    flex-shrink:0;
+    font-size:10px;
+    color:var(--mute);
+    transition:transform .15s ease;
+  }
+  .track-toggle[aria-expanded="true"] .track-toggle-icon{ transform:rotate(90deg); }
+  .track-player{ margin-top:8px; }
+
+  /* ---------- vinyl (tracklist card) ---------- */
+  .vinyl{
+    background:var(--ink);
+    padding:20px;
+    margin-top:6px;
+  }
+  .vinyl-side{
+    background:var(--paper);
+    padding:18px 20px;
+    max-width:360px;
+  }
+  .vinyl-heading{
+    font-family:var(--font-display);
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:26px;
+    letter-spacing:0.01em;
+    line-height:1;
+    color:var(--ink);
+    margin:0 0 14px;
+  }
+  .vinyl-track{ margin-bottom:10px; }
+  .vinyl-track:last-child{ margin-bottom:0; }
+  .vinyl-track-name{
+    font-weight:800;
+    color:var(--ink);
+  }
+  a.vinyl-track-name{ text-decoration:underline; text-decoration-color:rgba(17,17,17,0.3); }
+  a.vinyl-track-name:hover{ text-decoration-color:var(--accent); }
+  .vinyl-track-note{ color:var(--mute); font-weight:500; }
+  .vinyl .track-hint{ margin:2px 0 0; }
+  .vinyl audio{
+    width:100%;
+    margin-top:6px;
+    display:block;
+    border:0;
+  }
+
+  /* ---------- doodles: fine-line, scientific-illustration style ---------- */
+  .doodle{
+    display:block;
+    margin:0 auto 8px;
+  }
+  .doodle-row{
+    display:flex;
+    gap:14px;
+    margin:10px 0 4px;
+  }
+
+  /* ---------- facts ---------- */
+  .facts div{ display:flex; gap:8px; padding:4px 0; }
+  .facts span{ color:var(--mute); min-width:120px; }
+
+  /* ---------- manifesto (zine-style numbered grid) ---------- */
+  .manifesto{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1.5px solid var(--ink);
+    margin-top:16px;
+  }
+  .manifesto div{
+    border:1px solid var(--ink);
+    padding:14px;
+    font-size:13px;
+    line-height:1.4;
+  }
+  .manifesto .num{
+    display:block;
+    font-weight:800;
+    font-size:11px;
+    letter-spacing:0.05em;
+    color:var(--mute);
+    margin-bottom:6px;
+  }
+  .manifesto .label{
+    display:block;
+    text-transform:uppercase;
+    font-weight:800;
+    font-size:12px;
+    letter-spacing:0.04em;
+    margin-bottom:4px;
+  }
+
+  /* ---------- contact sheet (press photos) ---------- */
+  .contact-sheet{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:6px;
+    margin-top:6px;
+    padding:10px;
+    background:var(--ink);
+  }
+  .frame{
+    position:relative;
+    aspect-ratio:3/2;
+    background:var(--paper);
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+  }
+  .frame img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(1) contrast(1.1);
+  }
+  .frame-num{
+    position:relative;
+    z-index:1;
+    font-family:monospace;
+    font-size:10px;
+    font-weight:700;
+    color:var(--mute);
+    padding:4px 6px;
+  }
+
+  footer{
+    padding:40px 24px;
+    max-width:640px;
+    margin:0 auto;
+    color:var(--mute);
+  }
+  .footer-mark{
+    height:12px;
+    width:auto;
+    vertical-align:baseline;
+    opacity:0.75;
+  }
+
+  /* ---------- splash ---------- */
+  html.no-splash #splash{ display:none; }
+  html:not(.no-splash){ overflow:hidden; }
+
+  #splash{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:var(--splash-bg);
+    color:var(--splash-ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition:opacity .5s ease, visibility .5s ease;
+    overflow:hidden;
+  }
+  #splash .scribble{
+    width:min(70vw, 420px);
+    height:auto;
+    opacity:0.9;
+    mix-blend-mode:multiply;
+  }
+  #splash .splash-signature{
+    width:min(45vw, 260px);
+    height:auto;
+  }
+  #splash.is-hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+  /* ---------- grain ---------- */
+  #grain{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz4KICA8ZmlsdGVyIGlkPSduJz4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjknIG51bU9jdGF2ZXM9JzInIHN0aXRjaFRpbGVzPSdzdGl0Y2gnIHJlc3VsdD0ndCcvPgogICAgPGZlQ29sb3JNYXRyaXggaW49J3QnIHR5cGU9J21hdHJpeCcgdmFsdWVzPScwIDAgMCAwIDAgIDAgMCAwIDAgMCAgMCAwIDAgMCAwICAwLjM1IDAuMzUgMC4zNSAwIDAnLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbiknLz4KPC9zdmc+Cg==");
+    background-repeat:repeat;
+    background-size:200px 200px;
+    opacity:var(--grain-opacity);
+    animation:grain 1s steps(8) infinite;
+  }
+  @keyframes grain{
+    0%, 100%{ background-position:0 0; }
+    10%{ background-position:-5% -10%; }
+    20%{ background-position:-15% 5%; }
+    30%{ background-position:7% -25%; }
+    40%{ background-position:20% 25%; }
+    50%{ background-position:-25% 10%; }
+    60%{ background-position:15% 5%; }
+    70%{ background-position:0% 15%; }
+    80%{ background-position:25% 0%; }
+    90%{ background-position:-10% 10%; }
+  }
