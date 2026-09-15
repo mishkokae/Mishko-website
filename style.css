@@ -90,12 +90,18 @@
   .media.hero{
     position:relative;
     aspect-ratio:1/1;
+    max-width:300px;
+    margin:10px auto 22px;
     border:2px solid var(--ink);
     overflow:hidden;
     display:flex;
     align-items:flex-end;
     padding:20px;
     background:#141312;
+    transform:rotate(-2deg);
+    box-shadow:
+      7px 7px 0 0 var(--paper),
+      9px 9px 0 2px var(--ink);
   }
   .media.hero img,
   .media.hero video{
