@@ -371,14 +371,8 @@
     transition:opacity .5s ease, visibility .5s ease;
     overflow:hidden;
   }
-  #splash .scribble{
-    width:min(70vw, 420px);
-    height:auto;
-    opacity:0.9;
-    mix-blend-mode:multiply;
-  }
   #splash .splash-signature{
-    width:min(45vw, 260px);
+    width:min(75vw, 520px);
     height:auto;
   }
   #splash.is-hidden{
