@@ -90,18 +90,12 @@
   .media.hero{
     position:relative;
     aspect-ratio:1/1;
-    max-width:300px;
-    margin:10px auto 22px;
     border:2px solid var(--ink);
     overflow:hidden;
     display:flex;
     align-items:flex-end;
     padding:20px;
     background:#141312;
-    transform:rotate(-2deg);
-    box-shadow:
-      7px 7px 0 0 var(--paper),
-      9px 9px 0 2px var(--ink);
   }
   .media.hero img,
   .media.hero video{
@@ -112,6 +106,37 @@
     object-fit:contain;
     z-index:0;
   }
+  /* ---------- ad-frame: poster-panel mount for the hero art ---------- */
+  .ad-frame{
+    position:relative;
+    max-width:300px;
+    margin:10px auto 8px;
+    padding:12px;
+    background:linear-gradient(160deg, #f0f0ee 0%, #cfd0ce 45%, #9a9b99 100%);
+    border:1px solid #6f7170;
+    box-shadow:0 10px 22px rgba(0,0,0,0.28);
+  }
+  .ad-frame::before{
+    content:'';
+    position:absolute;
+    inset:5px;
+    pointer-events:none;
+    background:
+      radial-gradient(circle 3.5px at 7px 7px, #2a2b2a 60%, transparent 62%),
+      radial-gradient(circle 3.5px at calc(100% - 7px) 7px, #2a2b2a 60%, transparent 62%),
+      radial-gradient(circle 3.5px at 7px calc(100% - 7px), #2a2b2a 60%, transparent 62%),
+      radial-gradient(circle 3.5px at calc(100% - 7px) calc(100% - 7px), #2a2b2a 60%, transparent 62%);
+  }
+  .ad-frame-plate{
+    margin:8px 2px 0;
+    font-family:monospace;
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#4a4a48;
+    text-align:right;
+  }
+
   .hero-title{
     position:relative;
     z-index:1;
