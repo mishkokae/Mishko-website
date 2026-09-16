@@ -19,6 +19,7 @@
     font-size:15px;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
   a{ color:var(--ink); text-decoration:underline; text-decoration-color:rgba(17,17,17,0.35); }
@@ -61,6 +62,34 @@
   }
 
   .block{ margin-bottom:56px; }
+
+  /* ---------- band: full-bleed section background, paul-kalkbrenner style
+     colour blocking so sections read as distinct chunks while scanning.
+     content still lines up with the site's normal 640px/24px column. ---------- */
+  .block.band{
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+    padding-top:44px;
+    padding-bottom:44px;
+    padding-left:max(24px, calc(50vw - 296px));
+    padding-right:max(24px, calc(50vw - 296px));
+  }
+  .block.band-dark{
+    background:#111111;
+    --ink:#eeece3;
+    --mute:#a8a496;
+    color:var(--ink);
+  }
+  .block.band-dark a{ text-decoration-color:rgba(238,236,227,0.35); }
+  .block.band-dark a:hover{ text-decoration-color:var(--accent); }
+  .block.band-dark .line-list div,
+  .block.band-dark .track{ border-color:rgba(238,236,227,0.2); }
+  .block.band-dark .vinyl-track-name{ text-decoration-color:rgba(238,236,227,0.3); }
+  .block.band-dark .doodle-row svg{ filter:invert(1); }
+  .block.band-accent{
+    background:var(--accent);
+    --mute:#3a1410;
+  }
 
   /* progressive enhancement: only hide-then-reveal once js confirms it can
      actually observe and flip .is-visible back on - so content never gets
