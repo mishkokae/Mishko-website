@@ -25,22 +25,23 @@
 
 <nav>
   <a href="#top" class="brand"><img src="signature.png" alt="mishko" class="brand-mark"></a>
-  <button type="button" id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-overlay" aria-label="open menu"></button>
+  <span class="sep">/</span>
+  <a href="#bio">about</a>
+  <span class="sep">/</span>
+  <a href="#music">music</a>
+  <span class="sep">/</span>
+  <a href="#demos">demos</a>
+  <span class="sep">/</span>
+  <a href="#live">live</a>
+  <span class="sep">/</span>
+  <a href="#projects">projects</a>
+  <span class="sep">/</span>
+  <a href="#press">press</a>
+  <span class="sep">/</span>
+  <a href="#contact">contact</a>
+  <span class="sep">/</span>
+  <a href="https://www.instagram.com/mishk0000/" target="_blank">instagram</a>
 </nav>
-
-<div id="nav-overlay" class="nav-overlay" aria-hidden="true">
-  <ul class="nav-overlay-list">
-    <li><a href="#top">top</a></li>
-    <li><a href="#bio">about</a></li>
-    <li><a href="#music">music</a></li>
-    <li><a href="#demos">demos</a></li>
-    <li><a href="#live">live</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#press">press</a></li>
-    <li><a href="#contact">contact</a></li>
-    <li><a href="https://www.instagram.com/mishk0000/" target="_blank">instagram</a></li>
-  </ul>
-</div>
 
 <div class="wrap" id="top">
 
@@ -338,36 +339,6 @@
   if (document.documentElement.classList.contains('no-splash')) {
     document.getElementById('now-playing').hidden = false;
   }
-
-  // full-screen inverting nav menu
-  (function(){
-    var toggle = document.getElementById('nav-toggle');
-    var overlay = document.getElementById('nav-overlay');
-
-    function closeMenu(){
-      document.documentElement.classList.remove('nav-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      overlay.setAttribute('aria-hidden', 'true');
-    }
-    function openMenu(){
-      document.documentElement.classList.add('nav-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      overlay.setAttribute('aria-hidden', 'false');
-    }
-
-    toggle.addEventListener('click', function(){
-      var isOpen = document.documentElement.classList.contains('nav-open');
-      if (isOpen) { closeMenu(); } else { openMenu(); }
-    });
-
-    overlay.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') closeMenu();
-    });
-  })();
 
   // fade/lift each section in as it scrolls into view
   if ('IntersectionObserver' in window) {

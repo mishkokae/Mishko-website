@@ -31,73 +31,21 @@
   }
 
   /* ---------- nav ---------- */
-  html:not(.no-splash) nav{ display:none; }
   nav{
-    position:relative;
-    z-index:1001;
-    padding:24px;
+    padding:28px 24px 40px;
     max-width:640px;
     margin:0 auto;
     display:flex;
-    align-items:center;
-    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px 20px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
   }
+  nav a{ text-decoration:none; font-weight:800; }
+  nav a:hover{ text-decoration:underline; text-decoration-color:var(--accent); }
+  nav .sep{ color:var(--mute); font-weight:400; }
   nav a.brand{ display:inline-flex; align-items:center; }
   .brand-mark{ height:18px; width:auto; display:block; }
-
-  .nav-toggle{
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    border:1.5px solid var(--ink);
-    background:var(--ink);
-    padding:0;
-    cursor:pointer;
-    flex-shrink:0;
-    transition:background .2s ease, border-color .2s ease;
-  }
-  html.nav-open .nav-toggle{ background:transparent; border-color:var(--paper); }
-  html.nav-open .brand-mark{ filter:invert(1); }
-
-  .nav-overlay{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    background:var(--ink);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:80px 24px;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity .35s ease, visibility .35s ease;
-  }
-  html.nav-open{ overflow:hidden; }
-  html.nav-open .nav-overlay{
-    opacity:1;
-    visibility:visible;
-  }
-  .nav-overlay-list{
-    list-style:none;
-    width:100%;
-    max-width:480px;
-  }
-  .nav-overlay-list li{
-    border-bottom:1px solid rgba(238,236,227,0.25);
-  }
-  .nav-overlay-list li:first-child{ border-top:1px solid rgba(238,236,227,0.25); }
-  .nav-overlay-list a{
-    display:block;
-    padding:14px 2px;
-    font-family:var(--font-display);
-    font-weight:400;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-size:clamp(28px, 7vw, 44px);
-    color:var(--paper);
-    text-decoration:none;
-  }
-  .nav-overlay-list a:hover{ color:var(--accent); }
 
   /* ---------- generic blocks ---------- */
   .eyebrow{
@@ -116,16 +64,57 @@
 
   /* progressive enhancement: only hide-then-reveal once js confirms it can
      actually observe and flip .is-visible back on - so content never gets
-     stuck invisible if js fails. */
-  .js-reveal .block{
+     stuck invisible if js fails. each direct child of a .block cascades in
+     on its own slight delay, rather than the section moving as one flat
+     unit, with a bit of rotation/scale so it feels stamped into place
+     rather than just sliding up. */
+  .js-reveal .block > *{
     opacity:0;
-    transform:translateY(16px);
-    transition:opacity .6s ease, transform .6s ease;
+    transform:translateY(28px) scale(0.96) rotate(-0.6deg);
+    transition:opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
+    transition-delay:var(--reveal-delay, 0s);
   }
-  .js-reveal .block.is-visible{
+  .js-reveal .block.is-visible > *{
     opacity:1;
     transform:none;
   }
+  .js-reveal .block > *:nth-child(1){ --reveal-delay:0s; }
+  .js-reveal .block > *:nth-child(2){ --reveal-delay:.09s; }
+  .js-reveal .block > *:nth-child(3){ --reveal-delay:.18s; }
+  .js-reveal .block > *:nth-child(4){ --reveal-delay:.27s; }
+  .js-reveal .block > *:nth-child(5){ --reveal-delay:.36s; }
+  .js-reveal .block > *:nth-child(6){ --reveal-delay:.45s; }
+  .js-reveal .block > *:nth-child(n+7){ --reveal-delay:.5s; }
+
+  /* the manifesto grid and doodle row read as one composed unit - cascade
+     their own children a beat faster instead of arriving as a single slab */
+  .js-reveal .manifesto > div,
+  .js-reveal .doodle-row > svg,
+  .js-reveal .contact-sheet > .frame{
+    opacity:0;
+    transform:translateY(14px) scale(0.94);
+    transition:opacity .5s ease, transform .5s ease;
+    transition-delay:var(--reveal-delay-inner, 0s);
+  }
+  .js-reveal .block.is-visible .manifesto > div,
+  .js-reveal .block.is-visible .doodle-row > svg,
+  .js-reveal .block.is-visible .contact-sheet > .frame{
+    opacity:1;
+    transform:none;
+  }
+  .js-reveal .manifesto > div:nth-child(1),
+  .js-reveal .doodle-row > svg:nth-child(1),
+  .js-reveal .contact-sheet > .frame:nth-child(1){ --reveal-delay-inner:.55s; }
+  .js-reveal .manifesto > div:nth-child(2),
+  .js-reveal .doodle-row > svg:nth-child(2),
+  .js-reveal .contact-sheet > .frame:nth-child(2){ --reveal-delay-inner:.62s; }
+  .js-reveal .manifesto > div:nth-child(3),
+  .js-reveal .doodle-row > svg:nth-child(3),
+  .js-reveal .contact-sheet > .frame:nth-child(3){ --reveal-delay-inner:.69s; }
+  .js-reveal .manifesto > div:nth-child(4),
+  .js-reveal .contact-sheet > .frame:nth-child(4){ --reveal-delay-inner:.76s; }
+  .js-reveal .contact-sheet > .frame:nth-child(5){ --reveal-delay-inner:.83s; }
+  .js-reveal .contact-sheet > .frame:nth-child(6){ --reveal-delay-inner:.9s; }
 
   .block p{ max-width:56ch; margin-bottom:14px; }
 
