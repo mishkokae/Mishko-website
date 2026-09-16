@@ -31,21 +31,73 @@
   }
 
   /* ---------- nav ---------- */
+  html:not(.no-splash) nav{ display:none; }
   nav{
-    padding:28px 24px 40px;
+    position:relative;
+    z-index:1001;
+    padding:24px;
     max-width:640px;
     margin:0 auto;
     display:flex;
-    flex-wrap:wrap;
-    gap:14px 20px;
-    text-transform:uppercase;
-    letter-spacing:0.03em;
+    align-items:center;
+    justify-content:space-between;
   }
-  nav a{ text-decoration:none; font-weight:800; }
-  nav a:hover{ text-decoration:underline; text-decoration-color:var(--accent); }
-  nav .sep{ color:var(--mute); font-weight:400; }
   nav a.brand{ display:inline-flex; align-items:center; }
   .brand-mark{ height:18px; width:auto; display:block; }
+
+  .nav-toggle{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
+    background:var(--ink);
+    padding:0;
+    cursor:pointer;
+    flex-shrink:0;
+    transition:background .2s ease, border-color .2s ease;
+  }
+  html.nav-open .nav-toggle{ background:transparent; border-color:var(--paper); }
+  html.nav-open .brand-mark{ filter:invert(1); }
+
+  .nav-overlay{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease, visibility .35s ease;
+  }
+  html.nav-open{ overflow:hidden; }
+  html.nav-open .nav-overlay{
+    opacity:1;
+    visibility:visible;
+  }
+  .nav-overlay-list{
+    list-style:none;
+    width:100%;
+    max-width:480px;
+  }
+  .nav-overlay-list li{
+    border-bottom:1px solid rgba(238,236,227,0.25);
+  }
+  .nav-overlay-list li:first-child{ border-top:1px solid rgba(238,236,227,0.25); }
+  .nav-overlay-list a{
+    display:block;
+    padding:14px 2px;
+    font-family:var(--font-display);
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-size:clamp(28px, 7vw, 44px);
+    color:var(--paper);
+    text-decoration:none;
+  }
+  .nav-overlay-list a:hover{ color:var(--accent); }
 
   /* ---------- generic blocks ---------- */
   .eyebrow{
@@ -61,6 +113,19 @@
   }
 
   .block{ margin-bottom:56px; }
+
+  /* progressive enhancement: only hide-then-reveal once js confirms it can
+     actually observe and flip .is-visible back on - so content never gets
+     stuck invisible if js fails. */
+  .js-reveal .block{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .js-reveal .block.is-visible{
+    opacity:1;
+    transform:none;
+  }
 
   .block p{ max-width:56ch; margin-bottom:14px; }
 
