@@ -4,7 +4,7 @@
     {
       "name": "mishko-site",
       "runtimeExecutable": "py",
-      "runtimeArgs": ["-m", "http.server", "8421"],
+      "runtimeArgs": ["C:\\Users\\MICHAE~1\\AppData\\Local\\Temp\\claude\\C--Users-Michael-LSCS--Documents-mishko-site\\6b5499f6-b0e9-4864-a468-5ac759f1e00c\\scratchpad\\nocache_server.py", "8421", "."],
       "port": 8421
     }
   ]

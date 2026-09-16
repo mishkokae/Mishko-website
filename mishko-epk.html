@@ -250,6 +250,71 @@
 
 <footer>© <img src="signature.png" alt="mishko" class="footer-mark">, <span id="year"></span></footer>
 
+<div id="now-playing" class="now-playing" hidden>
+  <div class="np-left">
+    <span class="np-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+    <span class="np-text"><span class="np-label">now playing</span><span class="np-title">i need it</span></span>
+  </div>
+  <button type="button" id="np-toggle" class="np-toggle">sound off</button>
+</div>
+<div id="np-player-mount" aria-hidden="true"><div id="np-player"></div></div>
+
+<script>
+  // background player for the now-playing bar: a hidden youtube embed of
+  // "i need it" standing in for a hosted audio file. starts muted (browsers
+  // require that), then unmutes the moment the visitor clicks into the site -
+  // a real user gesture, so the unmute reliably takes.
+  var ytPlayer = null;
+  var ytReady = false;
+  var wantsSound = false;
+
+  function onYouTubeIframeAPIReady(){
+    ytPlayer = new YT.Player('np-player', {
+      height: '2', width: '2',
+      videoId: 'J0e-NsD81-I',
+      playerVars: { autoplay: 1, mute: 1, controls: 0, loop: 1, playlist: 'J0e-NsD81-I', playsinline: 1 },
+      events: {
+        onReady: function(e){
+          ytReady = true;
+          e.target.playVideo();
+          if (wantsSound) { e.target.unMute(); e.target.setVolume(65); }
+        }
+      }
+    });
+  }
+  (function(){
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  })();
+
+  function startSound(){
+    wantsSound = true;
+    var bar = document.getElementById('now-playing');
+    var toggle = document.getElementById('np-toggle');
+    bar.hidden = false;
+    toggle.textContent = 'sound on';
+    bar.classList.add('is-playing');
+    if (ytReady && ytPlayer) { ytPlayer.unMute(); ytPlayer.setVolume(65); }
+  }
+
+  document.getElementById('np-toggle').addEventListener('click', function(){
+    if (!ytPlayer) return;
+    var bar = document.getElementById('now-playing');
+    var isOn = this.textContent.trim() === 'sound on';
+    if (isOn) {
+      ytPlayer.mute();
+      this.textContent = 'sound off';
+      bar.classList.remove('is-playing');
+    } else {
+      ytPlayer.unMute();
+      ytPlayer.setVolume(65);
+      this.textContent = 'sound on';
+      bar.classList.add('is-playing');
+    }
+  });
+</script>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -260,12 +325,20 @@
     splash.classList.add('is-hidden');
     document.documentElement.classList.add('no-splash');
     try{ sessionStorage.setItem(ENTER_KEY, '1'); }catch(e){}
+    startSound();
   }
 
   splash.addEventListener('click', enterSite);
   splash.addEventListener('keydown', function(e){
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enterSite(); }
   });
+
+  // returning within the same session: splash is skipped, so there's no
+  // click to hang the unmute on. show the bar muted and let the toggle
+  // itself supply the user gesture.
+  if (document.documentElement.classList.contains('no-splash')) {
+    document.getElementById('now-playing').hidden = false;
+  }
 
   // click a demo's title to load and reveal its player; click again to hide it
   document.querySelectorAll('.track-toggle').forEach(function(btn){
