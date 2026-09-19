@@ -288,6 +288,21 @@
     flex-direction:column;
     gap:12px;
   }
+  .track-list-more{
+    align-self:center;
+    margin-top:4px;
+    background:none;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:0.08em;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .track-list-more:hover{ background:var(--ink); color:var(--paper); }
   .track-card{
     position:relative;
     display:flex;
@@ -299,6 +314,7 @@
     overflow:hidden;
     transition:background .15s ease, color .15s ease;
   }
+  .track-card[hidden]{ display:none; }
   .track-card:hover{ background:rgba(17,17,17,0.05); }
   .track-card.is-active{ background:var(--ink); color:var(--paper); }
   .track-card-toggle{
