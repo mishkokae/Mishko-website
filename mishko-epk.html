@@ -213,10 +213,30 @@
     if (ytReady && ytPlayer) { ytPlayer.unMute(); ytPlayer.setVolume(65); }
   }
 
+  // once a real track from the tracklist is chosen, the now-playing bar
+  // hands control over to that (window.__npSource / __npWidget, set by the
+  // tracklist script below) instead of the ambient youtube loop.
+  window.__npSource = 'youtube';
+  window.__npWidget = null;
+
   document.getElementById('np-toggle').addEventListener('click', function(){
-    if (!ytPlayer) return;
     var bar = document.getElementById('now-playing');
     var isOn = this.textContent.trim() === 'sound on';
+
+    if (window.__npSource === 'soundcloud' && window.__npWidget) {
+      if (isOn) {
+        window.__npWidget.setVolume(0);
+        this.textContent = 'sound off';
+        bar.classList.remove('is-playing');
+      } else {
+        window.__npWidget.setVolume(65);
+        this.textContent = 'sound on';
+        bar.classList.add('is-playing');
+      }
+      return;
+    }
+
+    if (!ytPlayer) return;
     if (isOn) {
       ytPlayer.mute();
       this.textContent = 'sound off';
@@ -300,6 +320,8 @@
 
     function card(i){ return container.querySelector('.track-card[data-index="' + i + '"]'); }
 
+    var VISIBLE_LIMIT = 5;
+
     function buildCards(){
       container.innerHTML = '';
       sounds.forEach(function(sound, i){
@@ -308,6 +330,7 @@
         var el = document.createElement('div');
         el.className = 'track-card';
         el.dataset.index = i;
+        if (i >= VISIBLE_LIMIT) el.hidden = true;
         el.innerHTML =
           '<button type="button" class="track-card-toggle" aria-label="play ' + escapeHtml(title) + '">' +
             '<svg class="icon-play" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>' +
@@ -323,6 +346,18 @@
         container.appendChild(el);
         wireCard(el, i);
       });
+
+      if (sounds.length > VISIBLE_LIMIT) {
+        var moreBtn = document.createElement('button');
+        moreBtn.type = 'button';
+        moreBtn.className = 'track-list-more';
+        moreBtn.textContent = 'view more (' + (sounds.length - VISIBLE_LIMIT) + ')';
+        moreBtn.addEventListener('click', function(){
+          container.querySelectorAll('.track-card').forEach(function(c){ c.hidden = false; });
+          moreBtn.remove();
+        });
+        container.appendChild(moreBtn);
+      }
     }
 
     function setActive(i){
@@ -369,6 +404,24 @@
       c.querySelector('.track-card-time').textContent = '';
     }
 
+    function updateNowPlaying(title){
+      var bar = document.getElementById('now-playing');
+      if (!bar) return;
+      bar.hidden = false;
+      bar.classList.add('is-playing');
+      var titleEl = bar.querySelector('.np-title');
+      if (titleEl) titleEl.textContent = title;
+      var toggle = document.getElementById('np-toggle');
+      if (toggle) toggle.textContent = 'sound on';
+      // hand control of the now-playing bar's sound toggle to this widget,
+      // and stop the ambient youtube loop so the two don't overlap
+      window.__npSource = 'soundcloud';
+      window.__npWidget = widget;
+      if (window.ytPlayer && typeof window.ytPlayer.pauseVideo === 'function') {
+        try { window.ytPlayer.pauseVideo(); } catch(e){}
+      }
+    }
+
     function playIndex(i){
       if (current !== -1) { setIcon(current, false); setProgress(current, 0); clearTime(current); }
       current = i;
@@ -377,6 +430,7 @@
       setTime(i, 0);
       widget.skip(i);
       widget.play();
+      updateNowPlaying(sounds[i] && sounds[i].title ? sounds[i].title : 'track ' + (i + 1));
     }
 
     function seekFromClientX(i, clientX){
@@ -433,8 +487,18 @@
     widget.bind(SC.Widget.Events.READY, function(){ fetchSoundsUntilReady(5); });
     widget.bind(SC.Widget.Events.PLAY, function(){
       widget.getCurrentSoundIndex(function(i){ current = i; setActive(i); setIcon(i, true); });
+      if (window.__npSource === 'soundcloud') {
+        var bar = document.getElementById('now-playing');
+        if (bar) bar.classList.add('is-playing');
+      }
     });
-    widget.bind(SC.Widget.Events.PAUSE, function(){ if (current !== -1) setIcon(current, false); });
+    widget.bind(SC.Widget.Events.PAUSE, function(){
+      if (current !== -1) setIcon(current, false);
+      if (window.__npSource === 'soundcloud') {
+        var bar = document.getElementById('now-playing');
+        if (bar) bar.classList.remove('is-playing');
+      }
+    });
     widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data){
       if (current === -1) return;
       setProgress(current, data.relativePosition);
