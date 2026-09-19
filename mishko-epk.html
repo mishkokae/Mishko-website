@@ -129,42 +129,38 @@
     -->
     <div class="video-grid">
       <div>
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/J0e-NsD81-I"
-            title="i need it — music video"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="video-embed" data-video-id="J0e-NsD81-I">
+          <img src="https://img.youtube.com/vi/J0e-NsD81-I/hqdefault.jpg" alt="" loading="lazy">
+          <button type="button" class="video-play" aria-label="play i need it — music video">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
         <p class="video-caption">i need it</p>
       </div>
       <div>
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/5Z82ojmm8lU"
-            title="jam"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="video-embed" data-video-id="5Z82ojmm8lU">
+          <img src="https://img.youtube.com/vi/5Z82ojmm8lU/hqdefault.jpg" alt="" loading="lazy">
+          <button type="button" class="video-play" aria-label="play jam">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
         <p class="video-caption">jam</p>
       </div>
       <div>
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/1l5NgEKVEqk"
-            title="audio experiments"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="video-embed" data-video-id="1l5NgEKVEqk">
+          <img src="https://img.youtube.com/vi/1l5NgEKVEqk/hqdefault.jpg" alt="" loading="lazy">
+          <button type="button" class="video-play" aria-label="play audio experiments">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
         <p class="video-caption">audio experiments</p>
       </div>
       <div>
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/R6KYo4sbOe8"
-            title="chatter, chatter — the news (official music video)"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="video-embed" data-video-id="R6KYo4sbOe8">
+          <img src="https://img.youtube.com/vi/R6KYo4sbOe8/hqdefault.jpg" alt="" loading="lazy">
+          <button type="button" class="video-play" aria-label="play chatter, chatter — the news">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
         <p class="video-caption">chatter, chatter — the news</p>
       </div>
@@ -325,6 +321,25 @@
       revealObserver.observe(block);
     });
   }
+
+  // ---------- project videos: swap the thumbnail + custom play button for
+  // the real youtube embed only once clicked, so nothing loads (and
+  // youtube's own big red play button never shows) until asked for ----------
+  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(embed){
+    embed.addEventListener('click', function(){
+      var id = embed.dataset.videoId;
+      var title = embed.querySelector('.video-play').getAttribute('aria-label').replace(/^play /, '');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      embed.innerHTML = '';
+      embed.appendChild(iframe);
+      delete embed.dataset.videoId;
+    }, { once: true });
+  });
 
   // ---------- tracklist: one card per song, generated live from a soundcloud
   // playlist, custom skin over a hidden soundcloud widget (no native ui shown) ----------
