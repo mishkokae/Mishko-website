@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://w.soundcloud.com/player/api.js"></script>
 </head>
 <body>
 
@@ -29,10 +30,6 @@
   <a href="#bio">about</a>
   <span class="sep">/</span>
   <a href="#music">music</a>
-  <span class="sep">/</span>
-  <a href="#portfolio">portfolio</a>
-  <span class="sep">/</span>
-  <a href="#demos">demos</a>
   <span class="sep">/</span>
   <a href="#live">live</a>
   <span class="sep">/</span>
@@ -97,123 +94,20 @@
 
   <div class="block" id="music">
     <p class="eyebrow">music</p>
-    <div class="vinyl">
-      <div class="vinyl-side">
-        <p class="vinyl-heading">tracklist</p>
-        <!--
-          each track is one .vinyl-track block. add an mp3 and uncomment
-          the audio tag to make it playable right here on the page:
-
-          <div class="vinyl-track">
-            <a href="#" class="vinyl-track-name">track title</a> <span class="vinyl-track-note">(add link)</span>
-            <audio controls preload="none" src="track.mp3"></audio>
-          </div>
-        -->
-        <div class="vinyl-track">
-          <a href="https://youtu.be/J0e-NsD81-I" class="vinyl-track-name" target="_blank">i need it</a>
-          <p class="track-hint">add an mp3 to make this playable here</p>
-        </div>
-        <div class="vinyl-track">
-          <span class="vinyl-track-name">sos</span> <span class="vinyl-track-note">(add link)</span>
-          <p class="track-hint">add an mp3 to make this playable here</p>
-        </div>
-        <div class="vinyl-track">
-          <span class="vinyl-track-name">[track title]</span> <span class="vinyl-track-note">(add link)</span>
-          <p class="track-hint">add an mp3 to make this playable here</p>
-        </div>
-      </div>
+    <p>full tracklist, pulled live from the "a portfolio" soundcloud playlist — click a track to play, or drag the progress bar to skip through it.</p>
+    <!--
+      this whole tracklist is generated at runtime: the soundcloud widget
+      loads the playlist below and asks it for its actual track list, so
+      adding/reordering/removing tracks on soundcloud is all that's needed —
+      nothing here needs editing. to point this at a different playlist,
+      change data-playlist-id to the numeric id in its embed src
+      (.../playlists/NNNNNNN).
+    -->
+    <div class="playlist" data-playlist-id="2298652383">
+      <p class="track-hint" id="playlist-loading">loading tracklist…</p>
     </div>
-  </div>
-
-  <div class="block" id="portfolio">
-    <p class="eyebrow">portfolio</p>
-    <p>a wider set of production and mix work.</p>
-    <div class="track-list">
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">a portfolio</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="420" scrolling="no" frameborder="no" allow="autoplay"
-            title="a portfolio — soundcloud playlist"
-            data-src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F2298652383&color=%23111111&show_artwork=true"></iframe>
-        </div>
-      </div>
-    </div>
+    <iframe id="playlist-frame" class="playlist-frame" allow="autoplay" aria-hidden="true" tabindex="-1"></iframe>
     <p class="media-caption"><a href="https://soundcloud.com/deneudenudes/sets/a-portfolio" target="_blank">listen on soundcloud →</a></p>
-  </div>
-
-  <div class="block band band-dark" id="demos">
-    <p class="eyebrow">demos</p>
-    <p>early sketches and works in progress — unmixed, unmastered.</p>
-    <div class="track-list">
-      <!--
-        each demo is one .track block: a clickable title button plus a
-        hidden .track-player holding the iframe. the iframe's real src
-        lives in data-src and only loads once you click the title, so nothing
-        plays (or even downloads) until you ask for it. to add another demo,
-        grab an embed src from soundcloud's share -> embed panel (or from
-        https://soundcloud.com/oembed?format=json&url=TRACK_URL) and copy
-        this pattern; for a plain mp3 instead, put <audio controls
-        preload="none" src="demo.mp3"> inside .track-player and drop data-src.
-      -->
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">lost</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            title="lost — demo"
-            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2398020345&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-        </div>
-      </div>
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">late train open station</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            title="late train open station — demo"
-            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2394445020&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-        </div>
-      </div>
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">10x10 alternative new 19082026</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            title="10x10 alternative new 19082026 — demo"
-            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2384493237&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-        </div>
-      </div>
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">speechless 23082026</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            title="speechless 23082026 — demo"
-            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2386689999&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-        </div>
-      </div>
-      <div class="track">
-        <button type="button" class="track-toggle" aria-expanded="false">
-          <span class="track-toggle-title">fish</span>
-          <span class="track-toggle-icon" aria-hidden="true">▶</span>
-        </button>
-        <div class="track-player" hidden>
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            title="fish — demo"
-            data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2316459008&color=%23111111&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="block" id="live">
@@ -239,7 +133,7 @@
         <p class="video-caption">i need it — music video</p>
       </div>
     </div>
-    <p class="media-caption"><a href="projects.html">more projects →</a></p>
+    <p class="media-caption"><a href='/projects'>more projects →</a></p>
   </div>
 
   <div class="block" id="press">
@@ -377,27 +271,179 @@
     });
   }
 
-  // click a demo's title to load and reveal its player; click again to hide it
-  document.querySelectorAll('.track-toggle').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var track = btn.closest('.track');
-      var player = track.querySelector('.track-player');
-      var iframe = player.querySelector('iframe');
-      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+  // ---------- tracklist: one card per song, generated live from a soundcloud
+  // playlist, custom skin over a hidden soundcloud widget (no native ui shown) ----------
+  (function(){
+    var container = document.querySelector('.playlist');
+    if (!container) return;
 
-      if (!isOpen) {
-        if (iframe && iframe.dataset.src) {
-          iframe.src = iframe.dataset.src;
-          delete iframe.dataset.src;
+    var playlistId = container.dataset.playlistId;
+    var frame = document.getElementById('playlist-frame');
+    var loadingMsg = document.getElementById('playlist-loading');
+
+    var widget = null;
+    var sounds = [];
+    var current = -1;
+    var dragging = false;
+
+    function playlistUrl(id){
+      return 'https://w.soundcloud.com/player/?url=' +
+        encodeURIComponent('https://api.soundcloud.com/playlists/' + id) +
+        '&show_artwork=false&visual=false&show_comments=false&show_user=false&show_reposts=false&sharing=false&download=false&auto_play=false';
+    }
+
+    function escapeHtml(s){
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : s;
+      return d.innerHTML;
+    }
+
+    function card(i){ return container.querySelector('.track-card[data-index="' + i + '"]'); }
+
+    function buildCards(){
+      container.innerHTML = '';
+      sounds.forEach(function(sound, i){
+        var title = sound && sound.title ? sound.title : 'track ' + (i + 1);
+        var num = String(i + 1).padStart(2, '0');
+        var el = document.createElement('div');
+        el.className = 'track-card';
+        el.dataset.index = i;
+        el.innerHTML =
+          '<button type="button" class="track-card-toggle" aria-label="play ' + escapeHtml(title) + '">' +
+            '<svg class="icon-play" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>' +
+            '<svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" hidden><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>' +
+          '</button>' +
+          '<div class="track-card-body">' +
+            '<span class="track-card-num">' + num + '</span>' +
+            '<span class="track-card-title">' + escapeHtml(title) + '</span>' +
+            '<span class="track-card-time"></span>' +
+            '<div class="track-card-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>' +
+          '</div>' +
+          '<div class="track-card-progress"><div class="track-card-progress-fill"></div></div>';
+        container.appendChild(el);
+        wireCard(el, i);
+      });
+    }
+
+    function setActive(i){
+      container.querySelectorAll('.track-card').forEach(function(c){
+        c.classList.toggle('is-active', Number(c.dataset.index) === i);
+      });
+    }
+
+    function setIcon(i, playing){
+      var c = card(i);
+      if (!c) return;
+      c.querySelector('.icon-play').hidden = playing;
+      c.querySelector('.icon-pause').hidden = !playing;
+      c.classList.toggle('is-playing', playing);
+    }
+
+    function setProgress(i, ratio){
+      var c = card(i);
+      if (!c) return;
+      c.querySelector('.track-card-progress-fill').style.width = (ratio * 100) + '%';
+    }
+
+    function formatTime(ms){
+      var total = Math.max(0, Math.floor(ms / 1000));
+      var m = Math.floor(total / 60);
+      var s = total % 60;
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function trackDuration(i){
+      return sounds[i] && sounds[i].duration ? sounds[i].duration : 0;
+    }
+
+    function setTime(i, elapsedMs){
+      var c = card(i);
+      if (!c) return;
+      var duration = trackDuration(i);
+      c.querySelector('.track-card-time').textContent = formatTime(elapsedMs) + ' / ' + formatTime(duration);
+    }
+
+    function clearTime(i){
+      var c = card(i);
+      if (!c) return;
+      c.querySelector('.track-card-time').textContent = '';
+    }
+
+    function playIndex(i){
+      if (current !== -1) { setIcon(current, false); setProgress(current, 0); clearTime(current); }
+      current = i;
+      setActive(i);
+      setProgress(i, 0);
+      setTime(i, 0);
+      widget.skip(i);
+      widget.play();
+    }
+
+    function seekFromClientX(i, clientX){
+      if (i !== current || !widget) return;
+      var bar = card(i).querySelector('.track-card-progress');
+      var rect = bar.getBoundingClientRect();
+      var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      setProgress(i, ratio);
+      setTime(i, ratio * trackDuration(i));
+      widget.getDuration(function(duration){ widget.seekTo(duration * ratio); });
+    }
+
+    function wireCard(c, idx){
+      var toggle = c.querySelector('.track-card-toggle');
+      var progressBar = c.querySelector('.track-card-progress');
+
+      function playOrToggle(){
+        if (idx === current) {
+          widget.isPaused(function(paused){ paused ? widget.play() : widget.pause(); });
+        } else {
+          playIndex(idx);
         }
-        player.hidden = false;
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        player.hidden = true;
-        btn.setAttribute('aria-expanded', 'false');
       }
+
+      toggle.addEventListener('click', function(e){ e.stopPropagation(); playOrToggle(); });
+      c.addEventListener('click', playOrToggle);
+
+      progressBar.addEventListener('mousedown', function(e){ e.stopPropagation(); dragging = idx; seekFromClientX(idx, e.clientX); });
+      progressBar.addEventListener('touchstart', function(e){ e.stopPropagation(); dragging = idx; seekFromClientX(idx, e.touches[0].clientX); }, { passive: true });
+    }
+
+    window.addEventListener('mousemove', function(e){ if (dragging !== false) seekFromClientX(dragging, e.clientX); });
+    window.addEventListener('mouseup', function(){ dragging = false; });
+    window.addEventListener('touchmove', function(e){ if (dragging !== false) seekFromClientX(dragging, e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend', function(){ dragging = false; });
+
+    // titles can arrive lazily from the widget - poll briefly until they've
+    // all resolved (or give up and show "track N" fallbacks for any that don't)
+    function fetchSoundsUntilReady(attemptsLeft){
+      widget.getSounds(function(s){
+        var allNamed = s.every(function(sound){ return sound && sound.title; });
+        if (allNamed || attemptsLeft <= 0) {
+          sounds = s;
+          if (loadingMsg) loadingMsg.remove();
+          buildCards();
+        } else {
+          setTimeout(function(){ fetchSoundsUntilReady(attemptsLeft - 1); }, 700);
+        }
+      });
+    }
+
+    frame.src = playlistUrl(playlistId);
+    widget = SC.Widget(frame);
+    widget.bind(SC.Widget.Events.READY, function(){ fetchSoundsUntilReady(5); });
+    widget.bind(SC.Widget.Events.PLAY, function(){
+      widget.getCurrentSoundIndex(function(i){ current = i; setActive(i); setIcon(i, true); });
     });
-  });
+    widget.bind(SC.Widget.Events.PAUSE, function(){ if (current !== -1) setIcon(current, false); });
+    widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data){
+      if (current === -1) return;
+      setProgress(current, data.relativePosition);
+      setTime(current, data.currentPosition);
+    });
+    widget.bind(SC.Widget.Events.FINISH, function(){
+      widget.getCurrentSoundIndex(function(i){ playIndex((i + 1) % sounds.length); });
+    });
+  })();
 </script>
 
 </body>
