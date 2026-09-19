@@ -276,71 +276,135 @@
     display:block;
     border:0;
   }
-  .track-toggle{
+  /* ---------- tracklist playlist ----------
+     a custom skin driven by the soundcloud widget api. the iframe is
+     rendered but visually hidden — every visible control is our own.
+     each song is its own bordered card with its own play button,
+     title, and progress bar. cards are generated at runtime from
+     whatever the linked soundcloud playlist actually contains. */
+  .playlist{
+    margin-top:6px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .track-card{
+    position:relative;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    width:100%;
+    gap:14px;
+    padding:14px 16px;
+    border:2px solid var(--ink);
+    cursor:pointer;
+    overflow:hidden;
+    transition:background .15s ease, color .15s ease;
+  }
+  .track-card:hover{ background:rgba(17,17,17,0.05); }
+  .track-card.is-active{ background:var(--ink); color:var(--paper); }
+  .track-card-toggle{
+    flex-shrink:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
     background:none;
-    border:0;
-    padding:0;
-    margin:0;
-    font:inherit;
-    font-weight:800;
     color:var(--ink);
-    text-align:left;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .track-card-toggle:hover{ transform:scale(1.08); }
+  .track-card.is-active .track-card-toggle{ border-color:var(--paper); color:var(--paper); }
+  .track-card-body{
+    flex:1;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .track-card-num{
+    font-family:monospace;
+    font-size:11px;
+    color:var(--mute);
+    flex-shrink:0;
+  }
+  .track-card.is-active .track-card-num{ color:rgba(255,255,255,0.6); }
+  .track-card-title{
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:14px;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .track-card-time{
+    flex-shrink:0;
+    font-family:monospace;
+    font-size:11px;
+    color:var(--mute);
+    margin-left:auto;
+  }
+  .track-card.is-active .track-card-time{ color:rgba(255,255,255,0.7); }
+  .track-card-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:2px;
+    height:14px;
+    margin-left:10px;
+    flex-shrink:0;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .track-card.is-playing .track-card-bars{ opacity:1; }
+  .track-card-bars span{
+    width:3px;
+    background:var(--accent);
+    animation:track-card-bars 0.9s ease-in-out infinite;
+  }
+  .track-card-bars span:nth-child(1){ height:6px; animation-delay:0s; }
+  .track-card-bars span:nth-child(2){ height:14px; animation-delay:.15s; }
+  .track-card-bars span:nth-child(3){ height:9px; animation-delay:.3s; }
+  .track-card-bars span:nth-child(4){ height:12px; animation-delay:.45s; }
+  @keyframes track-card-bars{
+    0%, 100%{ transform:scaleY(0.4); }
+    50%{ transform:scaleY(1); }
+  }
+  .track-card-progress{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:10px;
+    display:flex;
+    align-items:flex-end;
     cursor:pointer;
   }
-  .track-toggle-title{
-    text-decoration:underline;
-    text-decoration-color:rgba(17,17,17,0.3);
+  .track-card-progress::before{
+    content:'';
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:3px;
+    background:rgba(17,17,17,0.15);
+    transition:height .12s ease, background .15s ease;
   }
-  .track-toggle:hover .track-toggle-title{ text-decoration-color:var(--accent); }
-  .track-toggle-icon{
-    flex-shrink:0;
-    font-size:10px;
-    color:var(--mute);
-    transition:transform .15s ease;
+  .track-card.is-active .track-card-progress::before{ background:rgba(255,255,255,0.2); }
+  .track-card-progress:hover::before{ height:6px; }
+  .track-card-progress-fill{
+    position:relative;
+    height:3px;
+    width:0%;
+    background:var(--accent);
+    transition:width .15s linear, height .12s ease;
   }
-  .track-toggle[aria-expanded="true"] .track-toggle-icon{ transform:rotate(90deg); }
-  .track-player{ margin-top:8px; }
-
-  /* ---------- vinyl (tracklist card) ---------- */
-  .vinyl{
-    background:var(--ink);
-    padding:20px;
-    margin-top:6px;
-  }
-  .vinyl-side{
-    background:var(--paper);
-    padding:18px 20px;
-    max-width:360px;
-  }
-  .vinyl-heading{
-    font-family:var(--font-display);
-    font-weight:400;
-    text-transform:uppercase;
-    font-size:26px;
-    letter-spacing:0.01em;
-    line-height:1;
-    color:var(--ink);
-    margin:0 0 14px;
-  }
-  .vinyl-track{ margin-bottom:10px; }
-  .vinyl-track:last-child{ margin-bottom:0; }
-  .vinyl-track-name{
-    font-weight:800;
-    color:var(--ink);
-  }
-  a.vinyl-track-name{ text-decoration:underline; text-decoration-color:rgba(17,17,17,0.3); }
-  a.vinyl-track-name:hover{ text-decoration-color:var(--accent); }
-  .vinyl-track-note{ color:var(--mute); font-weight:500; }
-  .vinyl .track-hint{ margin:2px 0 0; }
-  .vinyl audio{
-    width:100%;
-    margin-top:6px;
-    display:block;
+  .track-card-progress:hover .track-card-progress-fill{ height:6px; }
+  .playlist-frame{
+    position:absolute;
+    width:1px;
+    height:1px;
+    opacity:0;
+    pointer-events:none;
+    overflow:hidden;
     border:0;
   }
 
