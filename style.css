@@ -287,6 +287,44 @@
   .line-list div:first-child{ border-top:1px solid rgba(17,17,17,0.2); }
   .line-list .t{ color:var(--mute); flex-shrink:0; }
 
+  /* ---------- streaming links: horizontal row of icon buttons ---------- */
+  .stream-icons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-top:14px;
+  }
+  .stream-icon{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .stream-icon-circle{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .stream-icon:hover .stream-icon-circle{
+    background:var(--ink);
+    color:var(--paper);
+    transform:scale(1.08);
+  }
+  .stream-icon.is-placeholder .stream-icon-circle{ opacity:0.4; }
+  .stream-icon-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--mute);
+  }
+
   /* ---------- tracks (listen / demos) ---------- */
   .track-list{ margin-top:6px; }
   .track{
