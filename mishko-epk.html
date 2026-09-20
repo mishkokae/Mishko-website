@@ -57,13 +57,68 @@
   <div class="block" id="listen">
     <p class="eyebrow">streaming links</p>
     <p>listen to "i need it" everywhere.</p>
-    <div class="line-list">
-      <div><a href="#" target="_blank">spotify</a><span class="t">add link</span></div>
-      <div><a href="#" target="_blank">apple music</a><span class="t">add link</span></div>
-      <div><a href="https://soundcloud.com/deneudenudes/i-need-it" target="_blank">soundcloud</a><span class="t">→</span></div>
-      <div><a href="#" target="_blank">youtube music</a><span class="t">add link</span></div>
-      <div><a href="https://youtu.be/J0e-NsD81-I" target="_blank">youtube</a><span class="t">→</span></div>
-      <div><a href="#" target="_blank">bandcamp</a><span class="t">add link</span></div>
+    <!--
+      each platform is one .stream-icon link. the .is-placeholder class just
+      dims the circle a bit as a visual flag that the href still needs a
+      real link — drop the real url in and remove that class.
+    -->
+    <div class="stream-icons">
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="spotify">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+            <path d="M7 12a5 5 0 0 1 10 0"/>
+            <path d="M4.5 12a7.5 7.5 0 0 1 15 0"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">spotify</span>
+      </a>
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="apple music">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 17V6l9-2v11"/>
+            <circle cx="7" cy="17" r="2"/>
+            <circle cx="16" cy="15" r="2"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">apple music</span>
+      </a>
+      <a href="https://soundcloud.com/deneudenudes/i-need-it" target="_blank" class="stream-icon" aria-label="soundcloud">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 17h11a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7 9.5 3 3 0 0 0 5 17Z"/>
+            <line x1="8" y1="13" x2="8" y2="17"/>
+            <line x1="10.5" y1="11" x2="10.5" y2="17"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">soundcloud</span>
+      </a>
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="youtube music">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">yt music</span>
+      </a>
+      <a href="https://youtu.be/J0e-NsD81-I" target="_blank" class="stream-icon" aria-label="youtube">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="6" width="18" height="12" rx="3"/>
+            <path d="M10 9v6l5-3-5-3Z" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">youtube</span>
+      </a>
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="bandcamp">
+        <span class="stream-icon-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" stroke="none">
+            <path d="M4 17h9l7-10H11L4 17Z"/>
+          </svg>
+        </span>
+        <span class="stream-icon-label">bandcamp</span>
+      </a>
     </div>
   </div>
 
