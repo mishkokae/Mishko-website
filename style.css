@@ -194,18 +194,40 @@
     margin-left:calc(50% - 50vw);
     margin-right:calc(50% - 50vw);
     margin-top:24px;
-    aspect-ratio:4/5;
-    background:#141312;
+    aspect-ratio:1/1;
+    background:#000;
   }
   .hub-center{
     position:absolute;
     inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14%;
   }
   .hub-center img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
+    /* splat.png is black line art; inverted so it reads as white on the
+       black backdrop regardless of whether its own background is
+       transparent or solid */
+    filter:invert(1);
+  }
+  /* slow looping "bloom" — clip-path grows outward and eases back,
+     like a time-lapse of something spreading, in place of an actual video */
+  .hub-grow{
+    animation:hub-grow 12s ease-in-out infinite;
+    transform-origin:center;
+  }
+  @keyframes hub-grow{
+    0%   { clip-path:circle(6% at 50% 50%); transform:scale(0.94); }
+    50%  { clip-path:circle(58% at 50% 50%); transform:scale(1.03); }
+    100% { clip-path:circle(6% at 50% 50%); transform:scale(0.94); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hub-grow{ animation:none; clip-path:none; transform:none; }
   }
   .hub-node{
     position:absolute;
