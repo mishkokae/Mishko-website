@@ -205,7 +205,7 @@
     margin-left:calc(50% - 50vw);
     margin-right:calc(50% - 50vw);
     margin-top:24px;
-    height:100vh;
+    height:65vh;
     background:var(--paper);
   }
   .hub-center{
