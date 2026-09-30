@@ -230,20 +230,6 @@
        transparent or solid */
     filter:invert(1);
   }
-  /* slow looping "bloom" — clip-path grows outward and eases back,
-     like a time-lapse of something spreading, in place of an actual video */
-  .hub-grow{
-    animation:hub-grow 12s ease-in-out infinite;
-    transform-origin:center;
-  }
-  @keyframes hub-grow{
-    0%   { clip-path:circle(6% at 50% 50%); transform:scale(0.94); }
-    50%  { clip-path:circle(58% at 50% 50%); transform:scale(1.03); }
-    100% { clip-path:circle(6% at 50% 50%); transform:scale(0.94); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .hub-grow{ animation:none; clip-path:none; transform:none; }
-  }
   .hub-node{
     position:absolute;
     display:flex;
