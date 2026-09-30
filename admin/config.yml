@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# where uploaded images from the editor would be stored (not used by the
+# text fields below, but decap-cms requires this to be set)
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Text"
+    files:
+      - name: "content"
+        label: "Bio, Links, Live Dates"
+        file: "content.json"
+        fields:
+          - label: "About / Bio"
+            name: "bio"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph_1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
+              - label: "Manifesto (the 01-04 grid)"
+                name: "manifesto"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+          - label: "Streaming Links & Contact"
+            name: "links"
+            widget: "object"
+            fields:
+              - { label: "Spotify URL", name: "spotify", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
+              - { label: "Apple Music URL", name: "apple_music", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
+              - { label: "SoundCloud URL", name: "soundcloud", widget: "string", required: false }
+              - { label: "YouTube Music URL", name: "yt_music", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
+              - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+              - { label: "Bandcamp URL", name: "bandcamp", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
+              - { label: "Contact Email", name: "email", widget: "string" }
+          - label: "Live Dates"
+            name: "live_dates"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.venue}}"
+            fields:
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Venue / Info", name: "venue", widget: "string" }
