@@ -200,6 +200,11 @@
   .media.bio-photo .bio-photo-cover{
     /* cover art is already finished black/white artwork - show as-is */
     filter:none;
+    /* cover.jpg is a square, but the portrait shot next to it is 4:5 -
+       matching that ratio here (instead of stretching to fill) crops the
+       art in evenly from the sides so both images end up the same height */
+    aspect-ratio:1080/1350;
+    object-fit:cover;
   }
   .media.placeholder{
     aspect-ratio:16/10;
