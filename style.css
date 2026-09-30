@@ -200,11 +200,13 @@
   .media.bio-photo .bio-photo-cover{
     /* cover art is already finished black/white artwork - show as-is */
     filter:none;
-    /* cover.jpg is a square, but the portrait shot next to it is 4:5 -
-       matching that ratio here (instead of stretching to fill) crops the
-       art in evenly from the sides so both images end up the same height */
+    /* cover.jpg is a square, but the portrait shot next to it is 4:5 - the
+       box below matches that ratio so both images are the same height,
+       and "contain" shows the full square uncropped, letterboxed against
+       the band's own near-black background rather than cutting it off */
     aspect-ratio:1080/1350;
-    object-fit:cover;
+    object-fit:contain;
+    background:#111111;
   }
   .media.placeholder{
     aspect-ratio:16/10;
