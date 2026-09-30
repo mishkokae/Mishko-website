@@ -192,7 +192,7 @@
     margin:0 auto 24px;
   }
   .media.bio-photo .bio-photo-portrait{
-    width:180px;
+    width:230px;
     flex:none;
     /* this shot is naturally dark; the site-wide contrast(1.1) crushes its
        shadows to near-black against the dark band behind it, so back off
@@ -200,11 +200,15 @@
     filter:grayscale(1) brightness(1.25) contrast(0.95);
   }
   .media.bio-photo .bio-photo-cover{
-    /* enlarged past the portrait's height on purpose - kept at its own
-       natural square shape (not cropped or stretched to match), so it
-       sits a little off-centre next to it rather than boxed to the same size */
-    width:260px;
+    /* cover.jpg is a square, but the portrait next to it is 4:5 - matching
+       that ratio here (at the same width) makes both the same height
+       without cropping: "contain" shows the full square, letterboxed
+       against the band's own near-black background */
+    width:230px;
     flex:none;
+    aspect-ratio:1080/1350;
+    object-fit:contain;
+    background:#111111;
     filter:none;
   }
   .media.placeholder{
