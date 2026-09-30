@@ -1,0 +1,24 @@
+{
+  "bio": {
+    "paragraph_1": "mishko is the solo project of a london-based producer, multi-instrumentalist, and performing artist. classically trained on piano, self-taught on guitar, bass, drums, saxophone, and trumpet — the work sits between song and studio process, using distortion and granulation as compositional tools rather than effects.",
+    "paragraph_2": "debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, and tileyard, supported by arts council england (dycp) funding.",
+    "manifesto": [
+      { "label": "based", "text": "london, uk" },
+      { "label": "instruments", "text": "piano, guitar, bass, drums, sax, trumpet, vocals" },
+      { "label": "studios", "text": "roundhouse, ten87, bankstock, tileyard" },
+      { "label": "support", "text": "arts council england (dycp)" }
+    ]
+  },
+  "links": {
+    "spotify": "",
+    "apple_music": "",
+    "soundcloud": "https://soundcloud.com/deneudenudes/i-need-it",
+    "yt_music": "",
+    "youtube": "https://youtu.be/J0e-NsD81-I",
+    "bandcamp": "",
+    "email": "hello@mishkomusic.com"
+  },
+  "live_dates": [
+    { "date": "no upcoming shows", "venue": "check back soon" }
+  ]
+}
