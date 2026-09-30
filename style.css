@@ -183,7 +183,7 @@
     display:block;
     filter:grayscale(1) contrast(1.1);
   }
-  .media.bio-photo{ margin-bottom:24px; }
+  .media.bio-photo{ max-width:260px; margin:0 auto 24px; }
   .media.bio-photo img{
     /* this shot is naturally dark; the site-wide contrast(1.1) crushes its
        shadows to near-black against the dark band behind it, so back off
