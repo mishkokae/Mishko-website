@@ -186,27 +186,26 @@
   .media.bio-photo{
     display:flex;
     align-items:flex-start;
+    flex-wrap:wrap;
     gap:12px;
-    max-width:420px;
+    max-width:480px;
     margin:0 auto 24px;
   }
-  .media.bio-photo img{ width:calc(50% - 6px); }
   .media.bio-photo .bio-photo-portrait{
+    width:180px;
+    flex:none;
     /* this shot is naturally dark; the site-wide contrast(1.1) crushes its
        shadows to near-black against the dark band behind it, so back off
        contrast and lift brightness instead of using the shared .media filter */
     filter:grayscale(1) brightness(1.25) contrast(0.95);
   }
   .media.bio-photo .bio-photo-cover{
-    /* cover art is already finished black/white artwork - show as-is */
+    /* enlarged past the portrait's height on purpose - kept at its own
+       natural square shape (not cropped or stretched to match), so it
+       sits a little off-centre next to it rather than boxed to the same size */
+    width:260px;
+    flex:none;
     filter:none;
-    /* cover.jpg is a square, but the portrait shot next to it is 4:5 - the
-       box below matches that ratio so both images are the same height,
-       and "contain" shows the full square uncropped, letterboxed against
-       the band's own near-black background rather than cutting it off */
-    aspect-ratio:1080/1350;
-    object-fit:contain;
-    background:#111111;
   }
   .media.placeholder{
     aspect-ratio:16/10;
