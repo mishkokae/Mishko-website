@@ -48,37 +48,8 @@
 
   <div class="block">
     <p class="eyebrow">debut single, 2024</p>
-    <!--
-      a central image with small clickable "hotspots" scattered around it,
-      nothing.tech product-page style. plain hotspots (.hub-node) just jump
-      to a section via href; a video hotspot (.hub-node--video, with
-      data-video-id instead of href) slides the panel below open and plays
-      that video in place instead of navigating away.
-    -->
     <div class="hub">
       <div class="hub-center"><img src="splat.png" alt="i need it artwork"></div>
-      <a href="#bio" class="hub-node" style="top:6%; left:6%;">
-        <span class="hub-node-thumb"><img src="press-01.jpg" alt=""></span>
-        <span class="hub-node-label">about</span>
-      </a>
-      <a href="#music" class="hub-node" style="top:6%; right:6%;">
-        <span class="hub-node-thumb"><img src="splat.png" alt=""></span>
-        <span class="hub-node-label">music</span>
-      </a>
-      <button type="button" class="hub-node hub-node--video" data-video-id="J0e-NsD81-I" style="bottom:6%; left:6%;">
-        <span class="hub-node-thumb">
-          <img src="https://img.youtube.com/vi/J0e-NsD81-I/hqdefault.jpg" alt="">
-          <span class="hub-play"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
-        </span>
-        <span class="hub-node-label">film</span>
-      </button>
-      <a href="#press" class="hub-node" style="bottom:6%; right:6%;">
-        <span class="hub-node-thumb"><img src="press-02.jpg" alt=""></span>
-        <span class="hub-node-label">press</span>
-      </a>
-    </div>
-    <div class="hub-video-panel" id="hub-video-panel" hidden>
-      <div class="video-embed" id="hub-video-embed"></div>
     </div>
     <p class="media-caption">mixed by matt lomas, mastered at metropolis studios</p>
   </div>
@@ -438,23 +409,6 @@
       embed.appendChild(iframe);
       delete embed.dataset.videoId;
     }, { once: true });
-  });
-
-  // ---------- hero hub: clicking a video hotspot slides the panel below the
-  // hub open and plays that video in place, instead of navigating anywhere ----------
-  document.querySelectorAll('.hub-node--video').forEach(function(node){
-    node.addEventListener('click', function(){
-      var id = node.dataset.videoId;
-      var panel = document.getElementById('hub-video-panel');
-      var embed = document.getElementById('hub-video-embed');
-      embed.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1"' +
-        ' title="' + node.querySelector('.hub-node-label').textContent + '"' +
-        ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"' +
-        ' allowfullscreen></iframe>';
-      panel.hidden = false;
-      requestAnimationFrame(function(){ panel.classList.add('is-open'); });
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
   });
 
   // ---------- tracklist: one card per song, generated live from a soundcloud
