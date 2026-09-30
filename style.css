@@ -183,6 +183,13 @@
     display:block;
     filter:grayscale(1) contrast(1.1);
   }
+  .media.bio-photo{ margin-bottom:24px; }
+  .media.bio-photo img{
+    /* this shot is naturally dark; the site-wide contrast(1.1) crushes its
+       shadows to near-black against the dark band behind it, so back off
+       contrast and lift brightness instead of using the shared .media filter */
+    filter:grayscale(1) brightness(1.25) contrast(0.95);
+  }
   .media.placeholder{
     aspect-ratio:16/10;
     border:2px solid var(--ink);
@@ -196,29 +203,6 @@
     color:var(--mute);
   }
 
-  /* ---------- hub: central image, full-bleed to the actual viewport
-     (breaks out of the paper strip's max-width entirely, not just its
-     side padding, so it reads as a big hero shot rather than a card) ---------- */
-  .hub{
-    position:relative;
-    width:100vw;
-    margin-left:calc(50% - 50vw);
-    margin-right:calc(50% - 50vw);
-    margin-top:24px;
-    height:65vh;
-    background:var(--paper);
-  }
-  .hub-center{
-    position:absolute;
-    inset:0;
-  }
-  .hub-center img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    filter:grayscale(1);
-  }
   .media.hero{
     position:relative;
     aspect-ratio:1/1;
