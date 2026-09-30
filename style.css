@@ -196,14 +196,16 @@
     color:var(--mute);
   }
 
-  /* ---------- hub: central image, full-bleed within the paper strip
-     (same trick used for the video grid) ---------- */
+  /* ---------- hub: central image, full-bleed to the actual viewport
+     (breaks out of the paper strip's max-width entirely, not just its
+     side padding, so it reads as a big hero shot rather than a card) ---------- */
   .hub{
     position:relative;
-    margin-left:calc(-1 * var(--wrap-pad));
-    margin-right:calc(-1 * var(--wrap-pad));
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
     margin-top:24px;
-    aspect-ratio:1/1;
+    height:100vh;
     background:var(--paper);
   }
   .hub-center{
