@@ -63,7 +63,7 @@
       real link — drop the real url in and remove that class.
     -->
     <div class="stream-icons">
-      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="spotify">
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="spotify" data-link="spotify">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
             <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
@@ -73,7 +73,7 @@
         </span>
         <span class="stream-icon-label">spotify</span>
       </a>
-      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="apple music">
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="apple music" data-link="apple_music">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 17V6l9-2v11"/>
@@ -83,7 +83,7 @@
         </span>
         <span class="stream-icon-label">apple music</span>
       </a>
-      <a href="https://soundcloud.com/deneudenudes/i-need-it" target="_blank" class="stream-icon" aria-label="soundcloud">
+      <a href="https://soundcloud.com/deneudenudes/i-need-it" target="_blank" class="stream-icon" aria-label="soundcloud" data-link="soundcloud">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 17h11a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7 9.5 3 3 0 0 0 5 17Z"/>
@@ -93,7 +93,7 @@
         </span>
         <span class="stream-icon-label">soundcloud</span>
       </a>
-      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="youtube music">
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="youtube music" data-link="yt_music">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
             <circle cx="12" cy="12" r="9"/>
@@ -102,7 +102,7 @@
         </span>
         <span class="stream-icon-label">yt music</span>
       </a>
-      <a href="https://youtu.be/J0e-NsD81-I" target="_blank" class="stream-icon" aria-label="youtube">
+      <a href="https://youtu.be/J0e-NsD81-I" target="_blank" class="stream-icon" aria-label="youtube" data-link="youtube">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
             <rect x="3" y="6" width="18" height="12" rx="3"/>
@@ -111,7 +111,7 @@
         </span>
         <span class="stream-icon-label">youtube</span>
       </a>
-      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="bandcamp">
+      <a href="#" target="_blank" class="stream-icon is-placeholder" aria-label="bandcamp" data-link="bandcamp">
         <span class="stream-icon-circle">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" stroke="none">
             <path d="M4 17h9l7-10H11L4 17Z"/>
@@ -152,13 +152,13 @@
         <line x1="30" y1="30" x2="8" y2="16"/>
       </svg>
     </div>
-    <p>mishko is the solo project of a london-based producer, multi-instrumentalist, and performing artist. classically trained on piano, self-taught on guitar, bass, drums, saxophone, and trumpet — the work sits between song and studio process, using distortion and granulation as compositional tools rather than effects.</p>
-    <p>debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, and tileyard, supported by arts council england (dycp) funding.</p>
-    <div class="manifesto">
-      <div><span class="num">01</span><span class="label">based</span>london, uk</div>
-      <div><span class="num">02</span><span class="label">instruments</span>piano, guitar, bass, drums, sax, trumpet, vocals</div>
-      <div><span class="num">03</span><span class="label">studios</span>roundhouse, ten87, bankstock, tileyard</div>
-      <div><span class="num">04</span><span class="label">support</span>arts council england (dycp)</div>
+    <p data-field="bio.paragraph_1">mishko is the solo project of a london-based producer, multi-instrumentalist, and performing artist. classically trained on piano, self-taught on guitar, bass, drums, saxophone, and trumpet — the work sits between song and studio process, using distortion and granulation as compositional tools rather than effects.</p>
+    <p data-field="bio.paragraph_2">debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, and tileyard, supported by arts council england (dycp) funding.</p>
+    <div class="manifesto" data-field-list="bio.manifesto">
+      <div><span class="num">01</span><span class="label" data-field="bio.manifesto.0.label">based</span><span data-field="bio.manifesto.0.text">london, uk</span></div>
+      <div><span class="num">02</span><span class="label" data-field="bio.manifesto.1.label">instruments</span><span data-field="bio.manifesto.1.text">piano, guitar, bass, drums, sax, trumpet, vocals</span></div>
+      <div><span class="num">03</span><span class="label" data-field="bio.manifesto.2.label">studios</span><span data-field="bio.manifesto.2.text">roundhouse, ten87, bankstock, tileyard</span></div>
+      <div><span class="num">04</span><span class="label" data-field="bio.manifesto.3.label">support</span><span data-field="bio.manifesto.3.text">arts council england (dycp)</span></div>
     </div>
   </div>
 
@@ -183,7 +183,7 @@
   <div class="block" id="live">
     <p class="eyebrow">live</p>
     <p>a transportable rig combining hardware sequencing, sampling, and a modular signal path — built to travel light by train while keeping the same tools used in the studio available on stage. developed with support from an nlpg grant.</p>
-    <div class="line-list">
+    <div class="line-list" id="live-dates-list">
       <div><span>no upcoming shows</span><span class="t">check back soon</span></div>
     </div>
   </div>
@@ -259,7 +259,7 @@
 
   <div class="block band band-accent" id="contact">
     <p class="eyebrow">contact</p>
-    <p><a href="mailto:hello@mishkomusic.com">hello@mishkomusic.com</a></p>
+    <p><a href="mailto:hello@mishkomusic.com" data-link="email">hello@mishkomusic.com</a></p>
   </div>
 
 </div>
@@ -627,6 +627,67 @@
     widget.bind(SC.Widget.Events.FINISH, function(){
       widget.getCurrentSoundIndex(function(i){ playIndex((i + 1) % sounds.length); });
     });
+  })();
+</script>
+
+<script>
+  // ---------- editable text: bio, streaming links, contact email and live
+  // dates all live in content.json instead of here, so they can be edited
+  // through the /admin cms without touching code. every element below
+  // already has the current text baked in as a fallback, so if this fetch
+  // ever fails (or a field is left blank) the page still reads correctly ----------
+  (function(){
+    function getPath(obj, path){
+      var parts = path.split('.');
+      for (var i = 0; i < parts.length; i++){
+        if (obj == null) return undefined;
+        obj = obj[parts[i]];
+      }
+      return obj;
+    }
+
+    fetch('content.json')
+      .then(function(r){ if (!r.ok) throw new Error('no content.json'); return r.json(); })
+      .then(function(data){
+        document.querySelectorAll('[data-field]').forEach(function(el){
+          var val = getPath(data, el.getAttribute('data-field'));
+          if (val === undefined || val === null || val === '') return;
+          el.textContent = val;
+        });
+
+        if (data.links) {
+          document.querySelectorAll('[data-link]').forEach(function(el){
+            var url = data.links[el.getAttribute('data-link')];
+            if (!url) return;
+            if (el.getAttribute('data-link') === 'email') {
+              el.href = 'mailto:' + url;
+              el.textContent = url;
+            } else {
+              el.href = url;
+              el.classList.remove('is-placeholder');
+            }
+          });
+        }
+
+        if (Array.isArray(data.live_dates) && data.live_dates.length) {
+          var list = document.getElementById('live-dates-list');
+          if (list) {
+            list.innerHTML = '';
+            data.live_dates.forEach(function(show){
+              var row = document.createElement('div');
+              var d = document.createElement('span');
+              d.textContent = show.date || '';
+              var v = document.createElement('span');
+              v.className = 't';
+              v.textContent = show.venue || '';
+              row.appendChild(d);
+              row.appendChild(v);
+              list.appendChild(row);
+            });
+          }
+        }
+      })
+      .catch(function(){ /* content.json missing/unreachable - keep the hardcoded text already on the page */ });
   })();
 </script>
 
