@@ -209,20 +209,13 @@
   .hub-center{
     position:absolute;
     inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:14%;
   }
   .hub-center img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     display:block;
-    /* splat.png has a solid white backing; multiply drops the white out
-       so only the black line art shows, letting it sit flush on the
-       paper's off-white tone instead of reading as its own box */
-    mix-blend-mode:multiply;
+    filter:grayscale(1);
   }
   .media.hero{
     position:relative;
