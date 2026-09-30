@@ -210,7 +210,7 @@
     margin-right:calc(-1 * var(--wrap-pad));
     margin-top:24px;
     aspect-ratio:1/1;
-    background:#000;
+    background:var(--paper);
   }
   .hub-center{
     position:absolute;
@@ -225,10 +225,6 @@
     height:100%;
     object-fit:contain;
     display:block;
-    /* splat.png is black line art; inverted so it reads as white on the
-       black backdrop regardless of whether its own background is
-       transparent or solid */
-    filter:invert(1);
   }
   .hub-node{
     position:absolute;
@@ -277,8 +273,8 @@
     font-size:9px;
     text-transform:uppercase;
     letter-spacing:0.06em;
-    color:#fff;
-    text-shadow:0 1px 3px rgba(0,0,0,0.8);
+    color:var(--ink);
+    text-shadow:0 1px 3px rgba(255,255,255,0.8);
   }
   .hub-video-panel{
     max-height:0;
