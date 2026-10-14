@@ -36,8 +36,12 @@ collections:
               - { label: "SoundCloud URL", name: "soundcloud", widget: "string", required: false }
               - { label: "YouTube Music URL", name: "yt_music", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
               - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+              - { label: "Amazon Music URL", name: "amazon_music", widget: "string", required: false }
+              - { label: "Tidal URL", name: "tidal", widget: "string", required: false }
+              - { label: "Deezer URL", name: "deezer", widget: "string", required: false }
               - { label: "Bandcamp URL", name: "bandcamp", widget: "string", required: false, hint: "leave blank to keep it greyed out" }
               - { label: "Contact Email", name: "email", widget: "string" }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
           - label: "Live Dates"
             name: "live_dates"
             widget: "list"
@@ -45,3 +49,19 @@ collections:
             fields:
               - { label: "Date", name: "date", widget: "string" }
               - { label: "Venue / Info", name: "venue", widget: "string" }
+          - label: "As Seen With (brands)"
+            name: "brands"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo (png/svg - shows instead of the name)", name: "logo", widget: "image", required: false, media_folder: "/brands", public_folder: "/brands" }
+              - { label: "Link (optional)", name: "url", widget: "string", required: false }
+          - label: "Press Features (links shown under the press photos)"
+            name: "press_features"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Short note (e.g. featured participant)", name: "note", widget: "string", required: false }
+              - { label: "Link", name: "url", widget: "string" }

@@ -1,24 +1,97 @@
 {
   "bio": {
     "paragraph_1": "mishko is the solo project of a london-based producer, multi-instrumentalist, and performing artist. classically trained on piano, self-taught on guitar, bass, drums, saxophone, and trumpet — the work sits between song and studio process, using distortion and granulation as compositional tools rather than effects.",
-    "paragraph_2": "debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, and tileyard, supported by arts council england (dycp) funding.",
+    "paragraph_2": "debut album out 2027, built around combining organic instrumentation with abstract electronic sound design. studio and stage experience spans the roundhouse, ten87, bankstock, tileyard, goldsmiths, and earth, supported by nlpg and wired for music.",
     "manifesto": [
-      { "label": "based", "text": "london, uk" },
-      { "label": "instruments", "text": "piano, guitar, bass, drums, sax, trumpet, vocals" },
-      { "label": "studios", "text": "roundhouse, ten87, bankstock, tileyard" },
-      { "label": "support", "text": "arts council england (dycp)" }
+      {
+        "label": "based",
+        "text": "london, uk"
+      },
+      {
+        "label": "instruments",
+        "text": "piano, guitar, bass, drums, sax, trumpet, vocals"
+      },
+      {
+        "label": "studios",
+        "text": "roundhouse, ten87, bankstock, tileyard, goldsmiths, earth"
+      },
+      {
+        "label": "support",
+        "text": "nlpg, wired for music"
+      }
     ]
   },
   "links": {
-    "spotify": "",
-    "apple_music": "",
+    "spotify": "https://open.spotify.com/album/1czXd1ynxJQaov9eNn8Xgs",
+    "apple_music": "https://music.apple.com/gb/album/1872679325",
     "soundcloud": "https://soundcloud.com/deneudenudes/i-need-it",
-    "yt_music": "",
+    "yt_music": "https://music.youtube.com/playlist?list=OLAK5uy_mBxRl0WzlboDKasdwCrH-KWCc4340rl3I",
     "youtube": "https://youtu.be/J0e-NsD81-I",
-    "bandcamp": "",
-    "email": "hello@mishkomusic.com"
+    "amazon_music": "https://music.amazon.com/albums/B0GK99C8S2",
+    "tidal": "https://tidal.com/album/493867562",
+    "deezer": "https://www.deezer.com/album/907029882",
+    "bandcamp": "https://mishk0.bandcamp.com/track/i-need-it",
+    "email": "hello@mishko.co.uk",
+    "instagram": "https://www.instagram.com/mishk0000/"
   },
   "live_dates": [
-    { "date": "no upcoming shows", "venue": "check back soon" }
+    {
+      "date": "no upcoming shows",
+      "venue": "check back soon"
+    }
+  ],
+  "brands": [
+    {
+      "name": "Right Chord Music",
+      "logo": "brands/right-chord-music.png",
+      "url": "https://www.rightchordmusic.co.uk"
+    },
+    {
+      "name": "EartH Studio 36",
+      "logo": "brands/earth-studio-36.png",
+      "url": "https://earthackney.co.uk"
+    },
+    {
+      "name": "AVA Creators Forum",
+      "logo": "brands/ava-creators-forum.png",
+      "url": "https://avafestival.com"
+    },
+    {
+      "name": "UD Music",
+      "logo": "brands/ud-music.png",
+      "url": "https://www.udmusic.org"
+    },
+    {
+      "name": "Red Bull",
+      "logo": "brands/red-bull.png",
+      "url": "https://www.redbull.com"
+    },
+    {
+      "name": "Ditto Music",
+      "logo": "brands/ditto-music.png",
+      "url": "https://dittomusic.com"
+    },
+    {
+      "name": "Gyro Distribution",
+      "logo": "brands/gyro-distribution.png",
+      "url": "https://gyro.music"
+    },
+    {
+      "name": "Roundhouse",
+      "logo": "brands/roundhouse.png",
+      "url": "https://www.roundhouse.org.uk"
+    }
+  ],
+  "press_features": [
+    {
+      "title": "AVA Creators Forum London 2026",
+      "note": "resident artist",
+      "url": "https://avafestival.com/creators-forum-london-2026-meet-the-participants/"
+    },
+    {
+      "title": "EartH Studio 36",
+      "note": "resident artist 2025–2026",
+      "url": "https://earthackney.co.uk"
+    }
   ]
 }
