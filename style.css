@@ -327,7 +327,7 @@
 
   /* ---------- lines / lists ---------- */
   .line-list{ margin-top:6px; }
-  .press-features{ margin-top:14px; }
+  .press-features{ margin-top:6px; }
   .line-list div{
     display:flex;
     justify-content:space-between;
