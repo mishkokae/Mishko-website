@@ -328,6 +328,11 @@
   /* ---------- lines / lists ---------- */
   .line-list{ margin-top:6px; }
   .press-features{ margin-top:6px; }
+  /* long titles wrap on their own line with the link underneath on phones,
+     instead of squeezing the title into a narrow column */
+  .press-features div{ flex-wrap:wrap; gap:2px 16px; }
+  .press-features div > span:first-child{ flex:1 1 240px; }
+  .manifesto > div{ min-width:0; overflow-wrap:anywhere; }
   .line-list div{
     display:flex;
     justify-content:space-between;
