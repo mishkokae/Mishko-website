@@ -175,6 +175,7 @@
   .media img,
   .media video{
     width:100%;
+    height:auto;
     display:block;
     filter:grayscale(1) contrast(1.1);
   }
@@ -792,17 +793,23 @@
     background-repeat:repeat;
     background-size:200px 200px;
     opacity:var(--grain-opacity);
-    animation:grain 1s steps(8) infinite;
   }
-  @keyframes grain{
-    0%, 100%{ background-position:0 0; }
-    10%{ background-position:-5% -10%; }
-    20%{ background-position:-15% 5%; }
-    30%{ background-position:7% -25%; }
-    40%{ background-position:20% 25%; }
-    50%{ background-position:-25% 10%; }
-    60%{ background-position:15% 5%; }
-    70%{ background-position:0% 15%; }
-    80%{ background-position:25% 0%; }
-    90%{ background-position:-10% 10%; }
+
+  /* ---------- polish: smooth in-page jumps, keyboard focus, press links ---------- */
+  html{ scroll-behavior:smooth; }
+  .block{ scroll-margin-top:16px; }
+  a:focus-visible,
+  button:focus-visible,
+  .brand-marquee:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  a.frame{ color:inherit; text-decoration:none; cursor:zoom-in; }
+  a.frame img{ transition:transform .35s ease, filter .35s ease; }
+  a.frame:hover img{ transform:scale(1.04); }
+
+  /* visitors who ask their device for less motion get everything shown immediately */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .js-reveal .block > *,
+    .js-reveal .manifesto > div,
+    .js-reveal .contact-sheet > .frame{ opacity:1 !important; transform:none !important; transition:none !important; }
+    a.frame img{ transition:none; }
   }
